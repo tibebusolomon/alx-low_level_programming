@@ -5,31 +5,16 @@
  * @str: The string to be capitalized
  * Return: A pointer to the changed string
  */
-char *cap_string(char *str)
+char *cap_string(char *)
 {
-	inr i = 0;
+	char *ret = s;
 
-	while (str[i])
-	{
-		while (!(str[i] >= 'a' && str[i] <= 'z'))
-			i++;
-		if (str[i - 1] == ' ' |
-		str[i - 1] == '\t' ||
-		str[i - 1] == '\n' ||
-		str[i - 1] == ',' ||
-		str[i - 1] == ';' ||
-		str[i - 1] == '.' ||
-		str[i - 1] == '!' ||
-		str[i - 1] == '?' ||
-		str[i - 1] == '-' ||
-		str[i - 1] == '(' ||
-		str[i - 1] == ')' ||
-		str[i - 1] == '{' ||
-		str[i - 1] == '}' ||
-		str[i - 1] == 0)
-		str[i] -= 32;
-		i++;
-	}
-	return (str);
-
+	if (_islower(*s) && member(*(s - 1), SEPARATORS))
+		*s++ += 'A' - 'a';
+	if (_islower(*s))
+		*s += 'A' - 'a';
+	while (*++s)
+		if (_islower(*s) && member(*(s - 1), SEPARATORS))
+			*s += 'A' - 'a';
+	return (ret);
 }
