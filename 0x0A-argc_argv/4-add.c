@@ -1,32 +1,39 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
 #include "main.h"
 
 /**
- * check_num - checks if it digit
- * @str: array str
+ * main - add two numbers.
+ * @argc: This is the number of arguments
+ * @argv: This is the array of arguments
  *
  * Return: Always 0 (Success)
  */
 
-int check_num(char *str)
+int main(int argc, char *argv[])
 {
-	unsigned int count;
+	int a, b, sum;
 
-	count = 0;
-	while (count < strlen(str))
+	if (argc < 2)
 	{
-		if (! isdigit(str[count]))
-		{
-			return (0);
-		}
-		count++;
+		printf("0\n");
+		return (0);
 	}
-	return (1);
+	else
+	{
+		sum = 0;
+		for (a = 1; a < argc; a++)
+		{
+			for (b = 0; argv[a][b] != '\0'; b++)
+			{
+				if (argv[a][b] < '0' || argv[a][b] > '9')
+				{
+					printf("Error\n");
+					return (1);
+				}
+			}
+			sum += atoi(argv[a]);
+		}
+		printf("%d\n", sum);
+		return (0);
+	}
 }
-
-/**
- * main - 
-
